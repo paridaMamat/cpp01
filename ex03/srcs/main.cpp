@@ -6,11 +6,12 @@
 /*   By: pmaimait <pmaimait@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:12:00 by pmaimait          #+#    #+#             */
-/*   Updated: 2023/10/02 13:53:31 by pmaimait         ###   ########.fr       */
+/*   Updated: 2023/10/03 11:38:36 by pmaimait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
+#include "../includes/HumanA.hpp"
+#include "../includes/HumanB.hpp"
 
 int main()
 {

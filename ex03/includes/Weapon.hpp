@@ -2,8 +2,7 @@
 #define WEAPON
 
 #include <iostream>
-#include "HumanA.hpp"
-#include "HumanB.hpp"
+
 
 class Weapon
 {

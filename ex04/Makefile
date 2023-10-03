@@ -1,6 +1,6 @@
 #..............................TARGET..................................#
 
-NAME = Weapon
+NAME = replace
 
 #..............................COMMANDS................................#
 
@@ -26,7 +26,7 @@ OBJ_DIR    = obj/
 
 #................................SOURCES.................................#
 
-SRCS = main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
+SRCS = main.cpp 
 ALL_SRCS = $(addprefix $(SRC_DIR), $(SRCS))
 OBJ = $(patsubst $(SRC_DIR)%.cpp, $(OBJ_DIR)%.o, $(ALL_SRCS))
 
