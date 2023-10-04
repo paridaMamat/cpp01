@@ -1,10 +1,14 @@
 #include "../includes/Replace.hpp"
 
 bool    isValidInput(int ac, char **av){
-    if (ac != 3) {
+    if (ac != 4) {
     std::cerr << "Subject says that only three argument can accept";
     return (false);
    }
-   if (std::open(av[1])
-
+   if (!av[2]){
+    std::cerr << "Invalid s1" << std::endl;
+    return (false);
+   }
+   return(true);
 }
+ 
