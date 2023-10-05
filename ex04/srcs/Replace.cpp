@@ -1,37 +1,38 @@
 #include "../includes/Replace.hpp"
 
+const char    *giveOutputName(std::string av1){
+    std::string addName = ".replace";
+    av1 += addName;
+    return (av1.c_str());
+}
+
+std::string Read(std::ifstream &input) {
+    // Read the entire content of the input file into a string
+    std::string content((std::istreambuf_iterator<char>(input)), (std::istreambuf_iterator<char>()));
+    return content;
+}
+
+std ::string Replace(std::string buffer, std::string s1, std::string s2){
+    
+}
+
 void    openReadReplace(char **av)
 {
-    //Open the input for reading
-    std::ifstream inputFile(av[1]);
-    if (!inputFile){
-        std::cerr << "Error : Cannot open input file." << std::endl;
-        return ;
+    std::ifstream   input(av[1]);
+    if (!input.good()){
+        std::cout << "Invalid input File" << std::endl;
+        return;
     }
-
-  // Generate a temporary file name
-    char tmpName[] = "fileName";
-    if (mktemp(tmpName) == nullptr) {
-        std::cerr << "Error: Cannot generate temporary file name." << std::endl;
-        return ;
+    std::ofstream output(giveOutputName(av[1]));
+    if (!output.good()){
+        std::cout << "Output creation failed" << std::endl;
+        input.close();
+        return;
     }
-
-    // Create and open the temporary output file with the generated name
-    std::ofstream tempOutputFile(tmpName);
-    if (!tempOutputFile) {
-        std::cerr << "Error: Cannot create temporary output file." << std::endl;
-        return ;
-    }
-
-    // Read data from the input file and write it to the temporary output file
-    char ch;
-    while (inputFile.get(ch)) {
-        tempOutputFile.put(ch);
-    }
-
-    // Close both the input and temporary output files
-    inputFile.close();
-    tempOutputFile.close();
-
-    std::cout << "File copied to temporary file: " << tmpFileName << std::endl;
+    std::string buffer = Read(input);
+    std::string s1 = av[2];
+    std::string s2 = av[3];
+    output << replace(buffer, s1, s2);
+    input.close();
+    output.close();
 }

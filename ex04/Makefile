@@ -26,7 +26,7 @@ OBJ_DIR    = obj/
 
 #................................SOURCES.................................#
 
-SRCS = main.cpp 
+SRCS = main.cpp check_input.cpp Replace.cpp 
 ALL_SRCS = $(addprefix $(SRC_DIR), $(SRCS))
 OBJ = $(patsubst $(SRC_DIR)%.cpp, $(OBJ_DIR)%.o, $(ALL_SRCS))
 
