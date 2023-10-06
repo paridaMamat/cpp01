@@ -3,17 +3,25 @@
 const char    *giveOutputName(std::string av1){
     std::string addName = ".replace";
     av1 += addName;
-    return (av1.c_str());
+    const char *a = av1.c_str();
+    return (a);
 }
 
 std::string Read(std::ifstream &input) {
-    // Read the entire content of the input file into a string
     std::string content((std::istreambuf_iterator<char>(input)), (std::istreambuf_iterator<char>()));
     return content;
 }
 
-std ::string Replace(std::string buffer, std::string s1, std::string s2){
-    
+std::string replace(std::string buffer, const std::string& s1, const std::string& s2) {
+    size_t start = 0;
+    size_t found = buffer.find(s1);
+
+    while (found != std::string::npos) {
+        buffer = buffer.substr(0, found) + s2 + buffer.substr(found + s1.length());
+        start = found + s2.length();
+        found = buffer.find(s1, start);
+    }
+    return buffer;
 }
 
 void    openReadReplace(char **av)
@@ -36,3 +44,4 @@ void    openReadReplace(char **av)
     input.close();
     output.close();
 }
+
