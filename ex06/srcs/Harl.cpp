@@ -1,26 +1,38 @@
 #include"../includes/Harl.hpp"
 Harl::Harl()
 {}
-Harl ::~Harl()
+Harl::~Harl()
 {}
 
 void    Harl::complain(std::string  level){
+    enum ilevel {DEBUG, INFO, WARNING, ERROR};
     std::string array[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-    void (Harl::*harlArray[4])();
-    harlArray[0] = &Harl::debug;
-    harlArray[1] = &Harl::info;
-    harlArray[2] = &Harl::warning;
-    harlArray[3] = &Harl::error;
-
-    for (int n = 0;n < 4; n++){
+    int n;
+    for (n = 0;n < 4; n++){
         if (array[n] == level)
-        {
-            (this->*harlArray[n])();
-            return;
-        }
+            break;
     }
-    std::cout << "[OTHER]\nmaybe i confused something else with the price of bacon, i am verry sorry, good job and good day " <<std::endl;
+    switch(n)
+    {
+        case DEBUG :
+            this->debug();
+        case INFO :
+            this->info();
+        case WARNING :
+            this->warning();
+        case ERROR :
+        {
 
+            this->error();
+            break;
+        }
+        default :
+        {
+            std::cout << "[OTHER]\nmaybe i confused something else with the price of bacon, i am verry sorry, good job and good day " <<std::endl;
+            break;
+        }
+    
+    }
 }
 void    Harl::debug(void){
     std ::cout << "[DEBUG]\nI love having extra bacon for my 7XL-double-cheese-triple-pickle-specialketchup burger. I really do! " << std::endl;

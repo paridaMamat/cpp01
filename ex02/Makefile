@@ -4,17 +4,15 @@ NAME = Brain
 
 #..............................COMMANDS................................#
 
-CC = c++
+CXX = c++
 
-CFLAG = -Werror -Wall -Wextra -std=c++98
+CXXFLAG = -Werror -Wall -Wextra -std=c++98
 
-DFLAG = -MMD
 
 MKDIR = mkdir -p
 
 RM   = rm -f
 
-MAKE_SILENT  = make --no-print-directory
 
 #...............................PATH.....................................#
 
@@ -33,10 +31,10 @@ OBJ = $(patsubst $(SRC_DIR)%.cpp, $(OBJ_DIR)%.o, $(ALL_SRCS))
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $^ -o $@
+	$(CXX) $(CXXFLAG) $^ -o $@
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.cpp  Makefile | $(OBJ_DIR)
-	$(CC) $(CFLAGS) $(DFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAG) -c $< -o $@
 
 $(OBJ_DIR) : 
 		$(MKDIR) $@

@@ -5,17 +5,15 @@ NAME = Zombie
 
 #..............................COMMANDS................................#
 
-CC = c++
+CXX = c++
 
-CFLAG = -Werror -Wall -Wextra -std=c++98
+CXXFLAG = -Werror -Wall -Wextra -std=c++98
 
-DFLAG = -MMD
+DFLAG = -MMD -MP
 
 MKDIR = mkdir -p
 
 RM   = rm -f
-
-MAKE_SILENT  = make --no-print-directory
 
 #...............................PATH.....................................#
 
@@ -27,26 +25,26 @@ OBJ_DIR    = obj/
 
 #................................SOURCES.................................#
 
-SRCS = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
+SRCS = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp 
 ALL_SRCS = $(addprefix $(SRC_DIR), $(SRCS))
-OBJ = $(patsubst $(SRC_DIR)%.cpp, $(OBJ_DIR)%.o, $(ALL_SRCS))
-
+OBJS_NAMES	= $(ALL_SRCS:.cpp=.o)
+OBJ = $(addprefix $(OBJ_DIR), $(OBJS_NAMES))
+DEPS		= $(addprefix $(OBJ_DIR), $(ALL_SRCS:.cpp=.d))
 #..................................HEADER................................#
 
 HEADERS = $(wildcard $(HEADER_DIR)*.hpp)
+HEADERS_INC	= $(addprefix -I, $(HEADER_DIR))
 
 #...................................MAKEFILE.............................#
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $^ -o $@
+$(NAME): $(HEADERS) $(OBJ)
+	$(CXX) $(CXXFLAG) $(HEADERS_INC) $(OBJ) -o $@
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp $(HEADERS) Makefile | $(OBJ_DIR)
-	$(CC) $(CFLAGS) $(DFLAGS) -c $< -o $@
-
-$(OBJ_DIR) : 
-		$(MKDIR) $@
+$(OBJ_DIR)%.o: %.cpp
+	@mkdir -p $(OBJ_DIR)$(SRC_DIR)
+	$(CXX) $(CXXFLAG) $(DFLAG) -c $< -o $@
 
 clean :
 	$(RM) -r $(OBJ_DIR)
@@ -56,8 +54,10 @@ fclean : clean
 
 re : fclean all
 
+# Include all .d files
+-include $(DEPS)
+
 .PHONY : all clean fclean re
-#.SILENT : 
 
 
 

@@ -6,13 +6,14 @@
 /*   By: pmaimait <pmaimait@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 15:04:09 by pmaimait          #+#    #+#             */
-/*   Updated: 2023/09/28 14:04:08 by pmaimait         ###   ########.fr       */
+/*   Updated: 2023/10/11 15:04:26 by pmaimait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ZOMBIE_HPP
 # define ZOMBIE_HPP
 # include <iostream>
+# include <sstream>
 # include <string>
 
 class Zombie 

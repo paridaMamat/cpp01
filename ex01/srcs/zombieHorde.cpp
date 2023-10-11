@@ -6,7 +6,7 @@
 /*   By: pmaimait <pmaimait@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 17:21:22 by pmaimait          #+#    #+#             */
-/*   Updated: 2023/09/28 14:16:43 by pmaimait         ###   ########.fr       */
+/*   Updated: 2023/10/11 15:01:13 by pmaimait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,15 @@ Zombie* zombieHorde(int N, std::string name)
     
     for (int i = 0; i < N; i++)
     {
-        new_name = name + std::to_string(i + 1);
+        std::stringstream ss;
+        ss << name << (i + 1);
+        new_name = ss.str();
         Ashley[i].setName(new_name);
     }
-    return(Ashley);
+    return Ashley;
 }
+
+
+
+
+

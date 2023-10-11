@@ -4,11 +4,11 @@ int main(int ac, char **av)
 {
     Harl    harl;
 
-    harl.complain("DEBUG");
-    harl.complain("INFO");
-    harl.complain("WARNING");
-    harl.complain("ERROR");
-    std::cout << "\ndon't woory there is also some another level of Harl" << std::endl;
-    harl.complain("OTHER");
+    if (ac != 2){
+        std::cout << "You have to tell me your level" << std::endl;
+        return (1);
+    }
+    std::string level = av[1];
+    harl.complain(level);
     return(0);
 }

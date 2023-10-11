@@ -6,7 +6,7 @@
 /*   By: pmaimait <pmaimait@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 13:50:47 by pmaimait          #+#    #+#             */
-/*   Updated: 2023/09/27 12:16:29 by pmaimait         ###   ########.fr       */
+/*   Updated: 2023/10/11 15:43:06 by pmaimait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Zombie :: Zombie(std::string name) : _name(name){
 }
 
 Zombie:: ~Zombie(){
-    std::cout << _name << " is dead" << std:: endl;
+    std::cout << _name << " is deleted" << std:: endl;
 }
 
 void    Zombie::announce(void){
